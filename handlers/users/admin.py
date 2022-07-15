@@ -16,7 +16,7 @@ async def get_all_users(message: types.Message):
     users = db.select_all_users()
     n = 1
     for user in users:
-        x = f"<b>{n}.</b> id_raqami-<b>{user[0]}</b>,   ismi-<b>{user[1]},</b>   email-<b>{user[2]}</b>."
+        x = f"<b>{n}.</b> @<b>{user.from_user.username}</b>,   ismi-<b>{user[1]},</b>   email-<b>{user[2]}</b>."
         n += 1
         await message.answer(x)
 
