@@ -6,19 +6,20 @@ from data.config import ADMINS
 
 from loader import dp, db, bot
 
-from  handlers.transliterate import to_cyrillic,to_latin
+from handlers.transliterate import to_cyrillic, to_latin
 from handlers.checkWord import checkWord
 
-from data.config import ADMINS,BOT_TOKEN
+
 
 @dp.message_handler(text="/obunachilar", user_id=ADMINS)
 async def get_all_users(message: types.Message):
     users = db.select_all_users()
-    n=1
+    n = 1
     for user in users:
-        x=f"<b>{n}.</b> id_raqami-<b>{user[0]}</b>,   ismi-<b>{user[1]},</b>   email-<b>{user[2]}</b>."
-        n+=1
+        x = f"<b>{n}.</b> id_raqami-<b>{user[0]}</b>,   ismi-<b>{user[1]},</b>   email-<b>{user[2]}</b>."
+        n += 1
         await message.answer(x)
+
 
 @dp.message_handler(text="/reklama", user_id=ADMINS)
 async def send_ad_to_all(message: types.Message):
@@ -28,6 +29,7 @@ async def send_ad_to_all(message: types.Message):
         await bot.send_message(chat_id=user_id, text="Assalom Alaykum hammaga iltimos. /start tugmasini bosib qo'ying")
         await asyncio.sleep(0.5)
 
+
 @dp.message_handler(text="/baza_tozalash", user_id=ADMINS)
 async def get_all_users(message: types.Message):
     db.delete_users()
@@ -36,9 +38,8 @@ async def get_all_users(message: types.Message):
 
 @dp.message_handler(CommandHelp())
 async def bot_help(message: types.Message):
-    text="Botdan foydalanish uchun so'z yuboring."
+    text = "Botdan foydalanish uchun so'z yuboring."
     await message.answer(text)
-
 
 
 @dp.message_handler(state=None, user_id=ADMINS)
