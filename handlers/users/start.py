@@ -11,16 +11,23 @@ from loader import dp, db, bot
 
 @dp.message_handler(CommandStart())
 async def bot_start(message: types.Message):
+    login = message.from_user.username
     name = message.from_user.full_name
     id = message.from_user.id
-    username=message.from_user.username
 
     # Foydalanuvchini bazaga qo'shamiz
-    try:
-        db.add_user(username=username,id=id, name=name)
-    except sqlite3.IntegrityError as err:
-        pass
-       # await bot.send_message(chat_id=ADMINS[0], text=err)
+    if login:
+        try:
+            db.add_user(username=login,id=id, name=name)
+        except sqlite3.IntegrityError as err:
+            pass
+
+    else:
+        try:
+            db.add_user(id=id, name=name)
+        except sqlite3.IntegrityError as err:
+            pass
+# await bot.send_message(chat_id=ADMINS[0], text=err)
 #bitta tepada #quyilgan xatolikni kursatmaydi ..UNIQUE constraint failed: Users.id.. shuni kursatadi agar # olib tashlasak
 
     await message.answer("Assalomu Alaykum.✅✅\nImlo-Xato botiga Xush Kelibsiz!")
