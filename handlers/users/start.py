@@ -7,8 +7,6 @@ from data.config import ADMINS
 from loader import dp, db, bot
 
 
-from data.config import ADMINS,BOT_TOKEN
-
 
 
 @dp.message_handler(CommandStart())
@@ -27,4 +25,4 @@ async def bot_start(message: types.Message):
     # Adminga xabar beramiz
     count = db.count_users()[0]
     msg = f"ismi👉 <b>{message.from_user.full_name}</b>   id👉 <b>{message.from_user.id}</b>  bazaga qo'shildi.\nBazada {count} ta foydalanuvchi bor."
-    await bot.send_message(user_id=ADMINS, text=msg)
+    await bot.send_message(chat_id=ADMINS[0], text=msg)
