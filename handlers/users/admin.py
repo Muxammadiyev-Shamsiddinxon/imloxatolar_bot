@@ -11,7 +11,7 @@ from handlers.checkWord import checkWord
 
 from data.config import ADMINS,BOT_TOKEN
 
-@dp.message_handler(text="/obunachilar", user_id='5280188027')
+@dp.message_handler(text="/obunachilar", user_id=ADMINS)
 async def get_all_users(message: types.Message):
     users = db.select_all_users()
     n=1
