@@ -18,7 +18,6 @@ async def get_all_users(message: types.Message):
     for user in users:
         x = f"\n<b>{n}.</b> id__  <b>{user[0]}</b>\n"
         x+= f"ismi__  <b>{user[1]}</b>\n"
-        x+= f"username__ <b>@{user[2]}.</b>\n"
         n += 1
         await message.answer(x)
 

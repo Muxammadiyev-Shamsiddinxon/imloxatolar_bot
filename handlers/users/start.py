@@ -10,17 +10,13 @@ from loader import dp, db, bot
 
 @dp.message_handler(CommandStart())
 async def bot_start(message: types.Message):
-    name=[]
-    name = message.from_user.full_name
-    name+= message.from_user.username
-
+    name=message.from_user.full_name
 
     # Foydalanuvchini bazaga qo'shamiz
     try:
         db.add_user(id=message.from_user.id, name=name)
     except sqlite3.IntegrityError as err:
         pass
-
 
 #await bot.send_message(chat_id=ADMINS[0], text=err)
 #bitta tepada #quyilgan xatolikni kursatmaydi ..UNIQUE constraint failed: Users.id.. shuni kursatadi agar # olib tashlasak
