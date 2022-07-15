@@ -12,10 +12,12 @@ from loader import dp, db, bot
 @dp.message_handler(CommandStart())
 async def bot_start(message: types.Message):
     name = message.from_user.full_name
+    id = message.from_user.id
+    username=message.from_user.username
+
     # Foydalanuvchini bazaga qo'shamiz
     try:
-        db.add_user(id=message.from_user.id,
-                    name=name)
+        db.add_user(username=username,id=id, name=name)
     except sqlite3.IntegrityError as err:
         pass
        # await bot.send_message(chat_id=ADMINS[0], text=err)
