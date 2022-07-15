@@ -16,21 +16,23 @@ async def get_all_users(message: types.Message):
     users = db.select_all_users()
     n = 1
     for user in users:
-        x = f"<b>{n}.</b> @<b>{user.from_user.username}</b>,   ismi-<b>{user[1]},</b>   email-<b>{user[2]}</b>."
+        x = f"\n<b>{n}.</b> id__  <b>{user[0]}</b>\n"
+        x+= f"ismi__  <b>{user[1]}</b>\n"
+        x+= f"username__ <b>@{user[2]}.</b>\n"
         n += 1
         await message.answer(x)
 
 
-@dp.message_handler(text="/reklama", user_id=ADMINS)
+@dp.message_handler(text="/reklama", user_id="5280188027")
 async def send_ad_to_all(message: types.Message):
     users = db.select_all_users()
     for user in users:
         user_id = user[0]
-        await bot.send_message(chat_id=user_id, text="Assalom Alaykum hammaga iltimos. /start tugmasini bosib qo'ying")
+        await bot.send_message(chat_id=user_id, text="Assalom Alaykum hammaga, iltimos. /start tugmasini bosib qo'ying")
         await asyncio.sleep(0.5)
 
 
-@dp.message_handler(text="/baza_tozalash", user_id=ADMINS)
+@dp.message_handler(text="/baza_tozalash", user_id="5280188027")
 async def get_all_users(message: types.Message):
     db.delete_users()
     await message.answer("Baza tozalandi!")
@@ -42,7 +44,7 @@ async def bot_help(message: types.Message):
     await message.answer(text)
 
 
-@dp.message_handler(state=None, user_id=ADMINS)
+@dp.message_handler(state=None, user_id="5280188027")
 async def get_all_users(message: types.Message):
     word = to_cyrillic(message.text)
     result = checkWord(word)
