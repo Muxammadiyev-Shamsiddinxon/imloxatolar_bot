@@ -7,11 +7,8 @@ from data.config import ADMINS
 from loader import dp, db, bot
 
 
-import os
+from data.config import ADMINS,BOT_TOKEN
 
-BOT_TOKEN = str(os.environ.get("BOT_TOKEN"))
-ADMINS = list(os.environ.get("ADMINS"))
-IP = str(os.environ.get("ip"))
 
 
 @dp.message_handler(CommandStart())

@@ -9,7 +9,7 @@ from loader import dp, db, bot
 from  handlers.transliterate import to_cyrillic,to_latin
 from handlers.checkWord import checkWord
 
-
+from data.config import ADMINS,BOT_TOKEN
 
 @dp.message_handler(text="/obunachilar", user_id='5280188027')
 async def get_all_users(message: types.Message):
