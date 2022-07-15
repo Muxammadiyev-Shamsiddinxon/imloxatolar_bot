@@ -11,16 +11,7 @@ from handlers.checkWord import checkWord
 
 
 
-import os
-
-BOT_TOKEN = str(os.environ.get("BOT_TOKEN"))
-ADMINS = list(os.environ.get("ADMINS"))
-IP = str(os.environ.get("ip"))
-
-
-
-
-@dp.message_handler(text="/obunachilar", user_id=ADMINS)
+@dp.message_handler(text="/obunachilar", user_id='5280188027')
 async def get_all_users(message: types.Message):
     users = db.select_all_users()
     n=1
