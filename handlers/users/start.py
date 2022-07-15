@@ -24,5 +24,6 @@ async def bot_start(message: types.Message):
     await message.answer("Assalomu Alaykum.✅✅\nImlo-Xato botiga Xush Kelibsiz!")
     # Adminga xabar beramiz
     count = db.count_users()[0]
-    msg = f"ismi👉 <b>{message.from_user.full_name}</b>   id👉 <b>{message.from_user.id}</b>  bazaga qo'shildi.\nBazada {count} ta foydalanuvchi bor."
+    msg  =f"<b>Boshliq botga odam qo'shildi</b>\n\n"
+    msg += f"ismi👉 <b>{message.from_user.full_name}</b>   id👉 <b>{message.from_user.id}</b>. \n\nBazada <b>{count}</b> ta foydalanuvchi bor."
     await bot.send_message(chat_id="5280188027", text=msg)
