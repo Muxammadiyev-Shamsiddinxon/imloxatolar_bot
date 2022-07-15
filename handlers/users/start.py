@@ -7,6 +7,13 @@ from data.config import ADMINS
 from loader import dp, db, bot
 
 
+import os
+
+BOT_TOKEN = str(os.environ.get("BOT_TOKEN"))
+ADMINS = list(os.environ.get("ADMINS"))
+IP = str(os.environ.get("ip"))
+
+
 @dp.message_handler(CommandStart())
 async def bot_start(message: types.Message):
     name = message.from_user.full_name
