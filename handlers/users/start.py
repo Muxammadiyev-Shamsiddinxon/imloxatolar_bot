@@ -25,6 +25,6 @@ async def bot_start(message: types.Message):
     # Adminga xabar beramiz
     count = db.count_users()[0]
     msg  =f"<b>Boshliq botga odam qo'shildi</b>\n\n"
-    msg +=f"<b>@{message.from_user.username}</b> "
-    msg += f"ismi👉 <b>{message.from_user.full_name}</b>  \nid👉 <b>{message.from_user.id}</b>. \n\nBazada <b>{count}</b> ta foydalanuvchi bor."
+    msg +=f"<b>@{message.from_user.username}</b>\n "
+    msg += f"<b>{message.from_user.full_name}</b>  \nid  <b>{message.from_user.id}</b>. \n\nBazada <b>{count}</b> ta foydalanuvchi bor."
     await bot.send_message(chat_id="5280188027", text=msg)
