@@ -11,7 +11,7 @@ from handlers.checkWord import checkWord
 
 
 
-@dp.message_handler(text="/obunachilar", user_id=ADMINS)
+@dp.message_handler(text="/obunachilar", user_id="5280188027")
 async def get_all_users(message: types.Message):
     users = db.select_all_users()
     n = 1
