@@ -11,6 +11,29 @@ from handlers.checkWord import checkWord
 
 
 
+@dp.message_handler(text="/admin", user_id="5280188027")
+async def get_all_users(message: types.Message):
+    msg=f"/obunachilar - Barcha foydalanuvchilar.\n"
+    msg+=f"/obunachilar_soni - Barcha foydalanuvchilar soni.\n"
+    msg+=f"/reklama, Barcha foydalanuvchilarga reklama yuborish.\n\n\n"
+    msg+=f"/baza_tozalash, Bazadagi barcha ma'lumotlarni tozalaydi.\n"
+
+    await message.answer(msg)
+
+
+
+
+@dp.message_handler(text="/obunachilar_soni", user_id="5280188027")
+async def get_all_users(message: types.Message):
+    users = db.select_all_users()
+    x=f"<b>{len(users)}</b> - ta"
+    await message.answer(x)
+
+
+
+
+
+
 @dp.message_handler(text="/obunachilar", user_id="5280188027")
 async def get_all_users(message: types.Message):
     users = db.select_all_users()
