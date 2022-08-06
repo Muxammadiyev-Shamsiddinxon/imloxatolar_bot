@@ -1,24 +1,23 @@
-from aiogram import types
+
 from loader import dp
 
 from aiogram import Bot, Dispatcher, executor, types
-import logging
 
-from  handlers.transliterate import to_cyrillic,to_latin
-from handlers.checkWord import checkWord
+# kril lotin kutubxonalari
+from handlers.transliterate import to_cyrillic,to_latin
+
+
 
 
 @dp.message_handler()
 async def imlo_bot(message: types.Message):
-    word = to_cyrillic(message.text)
-    result = checkWord(word)
-    if result['available']:
-        response = f"😎☚@Hacker_Attacks1☛😎\n✅ {to_latin(word.capitalize())}"
+    xabar = message.text
+    if xabar.isascii():
+        javob = f"<code>{to_cyrillic(xabar)}</code>"
+
     else:
-        response = f"😎☚@Hacker_Attacks1☛😎\n❌{to_latin(word.capitalize())}\n"
-        for text in result['matches']:
-            response += f"✅ {to_latin(text.capitalize())}\n"
-        response += "\nYana so'z kiriting! ✅✅"
-    await message.answer(response)
+        javob = f"<code>{to_latin(xabar)}</code>"
+
+    await message.reply(javob)
 
 
