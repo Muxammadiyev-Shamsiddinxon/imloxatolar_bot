@@ -1,5 +1,4 @@
-# Kril-Lotin-bot
+# @imloxatolar_bot 
 
-link -->  @KirilLotin2022dasturbot   
-Bu bot siz kiritgan so'zlarni Krildan-Lotinga , Lotindan-Krilga o'girib beradi 
-va real vaqtdagi dollir kursini ham kursatadi
+Siz istalgan so'z (lotincha yoki kirillcha farqi yo'q) yuboring, 
+O'zbek imlo qoidasiga to'g'riligini tekshirib beradi
